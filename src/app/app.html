@@ -1,0 +1,49 @@
+<style>
+    body {
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 200px;
+      min-height: 100vh;
+    }
+    
+    @media (max-width: 768px) {
+      .sidebar {
+        position: static;
+        width: 100%;
+        min-height: auto;
+      }
+      
+    }
+  </style>
+
+<div class="d-flex">
+
+    <!-- Sidebar -->
+    <nav class="sidebar bg-dark text-white p-3">
+      <h4 class="text-center mb-4">My App</h4>
+      <ul class="nav nav-pills flex-column gap-2">
+        <li class="nav-item">
+          <a routerLink="databinding" class="nav-link active">Data Binding</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="variables" class="nav-link text-white">Variables</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="signal" class="nav-link text-white">Signals</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link text-white">Messages</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link text-danger">Logout</a>
+        </li>
+      </ul>
+    </nav>
+  
+    <!-- Main Content -->
+    <main class="content p-4 flex-fill">
+        <router-outlet></router-outlet>
+    </main>
+  
+  </div>

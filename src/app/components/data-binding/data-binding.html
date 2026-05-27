@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: lightblue;">
+    <h1 >Data-Binding Works!</h1>
+ 
+     <b>Below is the Examples of One-Way Binding</b>
+     <h4>1. Binding From .Ts to Html</h4>
+<table>
+    
+    <thead>
+        <tr>
+            <td>Interpolation - Variable is wrapped in double curly braces</td>
+            <th>{{courseName}}</th>
+        </tr>
+    </thead>
+
+    <!-- tbody tag starts from here -->
+   
+    <tbody>
+       
+        <tr>
+            <td>Property Binding of Input Box - variable is assigned to the value ([value] = "variableName") property of the Input Box</td>
+            <th> <input type="text" [value]="courseName"></th>
+        </tr>
+        
+        <tr>
+            <td><p [class]="className">This is a Class property binding</p></td>
+            <td> <input [type]="inputType"></td>
+        </tr>
+    </tbody>
+    <!-- tbody tag ends here -->
+</table>
+<h4>2. Binding From Html to .Ts file</h4>
+
+<table>
+    <tbody>
+        <tr>
+            <td>
+                Event Binding - when you click on the button on the html page function is getting called from .Ts file
+            </td>
+            <td>
+                <button (click)="showWelcomeMessage()">Show Message</button>
+            </td>
+            <td>
+                <select (change)="onStateChanged()">
+                    <option> Pune</option>
+                    <option>Delhi</option>
+                     <option>Goa</option>
+                </select>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<h4>Two - Way Binding</h4>
+<table>
+    <tbody>
+        <tr>            
+            <td>
+               <input type="text" [(ngModel)]="courseName">
+            </td>
+            <h4>Function With Parameter</h4>
+            <td>
+                <button (click)="changeCourseName('Java')">Change Jave</button>
+             </td>
+             <td>
+                <button (click)="changeCourseName('DotNet')">Chane DotNet</button>
+             </td>
+        </tr>
+    </tbody>
+</table>
+</body>
+</html>
