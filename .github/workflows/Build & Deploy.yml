@@ -1,0 +1,44 @@
+name: Build and Deploy Angular
+
+on:
+  push:
+    branches:
+      - main # Triggers the workflow on every push to the main branch
+
+permissions:
+  contents: write # Allows the workflow to push the build artifacts to the gh-pages branch
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Download the repository code onto the runner
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      # Step 2: Install Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm' # Automatically caches node_modules for faster future runs
+
+      # Step 3: Install project dependencies safely
+      - name: Install Dependencies
+        run: npm ci
+
+      # Step 4: Run unit tests (configured for headless browsers)
+      # - name: Run Tests
+      #  run: npm test -- --watch=false --browsers=ChromeHeadless
+
+      # Step 5: Build the Angular app for production
+      - name: Build Application
+        run: npm run build -- --configuration=production --base-href=/Angular1/
+
+      # Step 6: Deploy the dist folder to GitHub Pages
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist/BasicApp/browser # Path to your built files (check your angular.json)
+          branch: gh-pages # The branch where static files will be hosted
