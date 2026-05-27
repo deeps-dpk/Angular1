@@ -11,6 +11,10 @@ permissions:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    concurrency:
+      group: deploy
+      cancel-in-progress: true
+
 
     steps:
       # Step 1: Download the repository code onto the runner
@@ -37,6 +41,13 @@ jobs:
       - name: Build Application
         run: npm run build -- --configuration=production --base-href=/Angular1/
         # run: npm run build
+
+      - name: Upload Build on Artifacts
+        uses: actions/upload-artifact@v4.6.0
+        with:
+          name: Angular-build
+          path: out/
+
 
       # Step 6: Deploy the dist folder to GitHub Pages
       - name: Deploy to GitHub Pages
