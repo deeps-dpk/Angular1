@@ -27,6 +27,7 @@ jobs:
       # Step 3: Install project dependencies safely
       - name: Install Dependencies
         run: npm ci
+        # run: npm install
 
       # Step 4: Run unit tests (configured for headless browsers)
       # - name: Run Tests
@@ -35,6 +36,7 @@ jobs:
       # Step 5: Build the Angular app for production
       - name: Build Application
         run: npm run build -- --configuration=production --base-href=/Angular1/
+        # run: npm run build
 
       # Step 6: Deploy the dist folder to GitHub Pages
       - name: Deploy to GitHub Pages
